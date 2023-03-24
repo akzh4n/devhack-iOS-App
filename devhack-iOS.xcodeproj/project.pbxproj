@@ -1,0 +1,429 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 56;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7355010F29CDCAB600A1675B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7355010E29CDCAB600A1675B /* AppDelegate.swift */; };
+		7355011129CDCAB600A1675B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7355011029CDCAB600A1675B /* SceneDelegate.swift */; };
+		7355011629CDCAB600A1675B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7355011429CDCAB600A1675B /* Main.storyboard */; };
+		7355011829CDCAB700A1675B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7355011729CDCAB700A1675B /* Assets.xcassets */; };
+		7355011B29CDCAB700A1675B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7355011929CDCAB700A1675B /* LaunchScreen.storyboard */; };
+		7355012529CDE9B100A1675B /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7355012429CDE9B100A1675B /* AuthService.swift */; };
+		7355012829CDEA4900A1675B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7355012729CDEA4900A1675B /* Alamofire */; };
+		7355012B29CDEA7F00A1675B /* KeychainSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 7355012A29CDEA7F00A1675B /* KeychainSwift */; };
+		7355012D29CDEB7C00A1675B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7355012C29CDEB7C00A1675B /* LoginViewController.swift */; };
+		7355012F29CDEB8500A1675B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7355012E29CDEB8500A1675B /* RegisterViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		7355010B29CDCAB600A1675B /* devhack-iOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "devhack-iOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		7355010E29CDCAB600A1675B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		7355011029CDCAB600A1675B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		7355011529CDCAB600A1675B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		7355011729CDCAB700A1675B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		7355011A29CDCAB700A1675B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		7355011C29CDCAB700A1675B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		7355012429CDE9B100A1675B /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		7355012C29CDEB7C00A1675B /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		7355012E29CDEB8500A1675B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		7355013029CDED3300A1675B /* devhack-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "devhack-iOS.entitlements"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		7355010829CDCAB600A1675B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7355012B29CDEA7F00A1675B /* KeychainSwift in Frameworks */,
+				7355012829CDEA4900A1675B /* Alamofire in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7355010229CDCAB600A1675B = {
+			isa = PBXGroup;
+			children = (
+				7355010D29CDCAB600A1675B /* devhack-iOS */,
+				7355010C29CDCAB600A1675B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		7355010C29CDCAB600A1675B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				7355010B29CDCAB600A1675B /* devhack-iOS.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		7355010D29CDCAB600A1675B /* devhack-iOS */ = {
+			isa = PBXGroup;
+			children = (
+				7355013029CDED3300A1675B /* devhack-iOS.entitlements */,
+				7355012229CDCAE000A1675B /* App */,
+				7355012429CDE9B100A1675B /* AuthService.swift */,
+				7355011729CDCAB700A1675B /* Assets.xcassets */,
+				7355011429CDCAB600A1675B /* Main.storyboard */,
+				7355011929CDCAB700A1675B /* LaunchScreen.storyboard */,
+				7355011C29CDCAB700A1675B /* Info.plist */,
+				7355012C29CDEB7C00A1675B /* LoginViewController.swift */,
+				7355012E29CDEB8500A1675B /* RegisterViewController.swift */,
+			);
+			path = "devhack-iOS";
+			sourceTree = "<group>";
+		};
+		7355012229CDCAE000A1675B /* App */ = {
+			isa = PBXGroup;
+			children = (
+				7355010E29CDCAB600A1675B /* AppDelegate.swift */,
+				7355011029CDCAB600A1675B /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		7355010A29CDCAB600A1675B /* devhack-iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 7355011F29CDCAB700A1675B /* Build configuration list for PBXNativeTarget "devhack-iOS" */;
+			buildPhases = (
+				7355010729CDCAB600A1675B /* Sources */,
+				7355010829CDCAB600A1675B /* Frameworks */,
+				7355010929CDCAB600A1675B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "devhack-iOS";
+			packageProductDependencies = (
+				7355012729CDEA4900A1675B /* Alamofire */,
+				7355012A29CDEA7F00A1675B /* KeychainSwift */,
+			);
+			productName = "devhack-iOS";
+			productReference = 7355010B29CDCAB600A1675B /* devhack-iOS.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		7355010329CDCAB600A1675B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1420;
+				LastUpgradeCheck = 1420;
+				TargetAttributes = {
+					7355010A29CDCAB600A1675B = {
+						CreatedOnToolsVersion = 14.2;
+					};
+				};
+			};
+			buildConfigurationList = 7355010629CDCAB600A1675B /* Build configuration list for PBXProject "devhack-iOS" */;
+			compatibilityVersion = "Xcode 14.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 7355010229CDCAB600A1675B;
+			packageReferences = (
+				7355012629CDEA4900A1675B /* XCRemoteSwiftPackageReference "Alamofire" */,
+				7355012929CDEA7F00A1675B /* XCRemoteSwiftPackageReference "keychain-swift" */,
+			);
+			productRefGroup = 7355010C29CDCAB600A1675B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				7355010A29CDCAB600A1675B /* devhack-iOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		7355010929CDCAB600A1675B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7355011B29CDCAB700A1675B /* LaunchScreen.storyboard in Resources */,
+				7355011829CDCAB700A1675B /* Assets.xcassets in Resources */,
+				7355011629CDCAB600A1675B /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		7355010729CDCAB600A1675B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7355012D29CDEB7C00A1675B /* LoginViewController.swift in Sources */,
+				7355012F29CDEB8500A1675B /* RegisterViewController.swift in Sources */,
+				7355010F29CDCAB600A1675B /* AppDelegate.swift in Sources */,
+				7355011129CDCAB600A1675B /* SceneDelegate.swift in Sources */,
+				7355012529CDE9B100A1675B /* AuthService.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		7355011429CDCAB600A1675B /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7355011529CDCAB600A1675B /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		7355011929CDCAB700A1675B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				7355011A29CDCAB700A1675B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		7355011D29CDCAB700A1675B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		7355011E29CDCAB700A1675B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		7355012029CDCAB700A1675B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "devhack-iOS/devhack-iOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 79H38YZB98;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "devhack-iOS/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kz.devhack.iOS-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		7355012129CDCAB700A1675B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = "devhack-iOS/devhack-iOS.entitlements";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 79H38YZB98;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "devhack-iOS/Info.plist";
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UIMainStoryboardFile = Main;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "kz.devhack.iOS-App";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		7355010629CDCAB600A1675B /* Build configuration list for PBXProject "devhack-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7355011D29CDCAB700A1675B /* Debug */,
+				7355011E29CDCAB700A1675B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		7355011F29CDCAB700A1675B /* Build configuration list for PBXNativeTarget "devhack-iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				7355012029CDCAB700A1675B /* Debug */,
+				7355012129CDCAB700A1675B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7355012629CDEA4900A1675B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+		7355012929CDEA7F00A1675B /* XCRemoteSwiftPackageReference "keychain-swift" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/keychain-swift";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7355012729CDEA4900A1675B /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7355012629CDEA4900A1675B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		7355012A29CDEA7F00A1675B /* KeychainSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7355012929CDEA7F00A1675B /* XCRemoteSwiftPackageReference "keychain-swift" */;
+			productName = KeychainSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 7355010329CDCAB600A1675B /* Project object */;
+}

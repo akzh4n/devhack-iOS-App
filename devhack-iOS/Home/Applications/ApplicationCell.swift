@@ -9,7 +9,7 @@ import Foundation
 
 
 
-struct ServiceModel {
+struct ApplicationModel {
     var reason: String
     var executionTime: String
     var performer: String

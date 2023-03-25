@@ -7,10 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7302DFC029CF3BAE00FC6937 /* ServiceListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7302DFBF29CF3BAE00FC6937 /* ServiceListTableViewController.swift */; };
+		7302DFC429CF3BF700FC6937 /* ServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7302DFC329CF3BF700FC6937 /* ServicesTableViewCell.swift */; };
+		7302DFC629CF3C1D00FC6937 /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7302DFC529CF3C1D00FC6937 /* ServiceCell.swift */; };
 		7319156429CED20400ABBDE6 /* UIResponder+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7319156329CED20400ABBDE6 /* UIResponder+Utils.swift */; };
 		7319156629CED25500ABBDE6 /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7319156529CED25500ABBDE6 /* Validators.swift */; };
 		7319156929CED2CF00ABBDE6 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7319156829CED2CF00ABBDE6 /* UITextFieldExtensions.swift */; };
-		7319157129CED8C500ABBDE6 /* ServicesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7319157029CED8C500ABBDE6 /* ServicesViewController.swift */; };
+		7319157129CED8C500ABBDE6 /* ApplicationsViewController.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7319157029CED8C500ABBDE6 /* ApplicationsViewController.swift.swift */; };
 		7319157629CEDA3500ABBDE6 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7319157529CEDA3500ABBDE6 /* SnapKit */; };
 		7319157A29CEDB6700ABBDE6 /* UIColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7319157929CEDB6700ABBDE6 /* UIColorExtensions.swift */; };
 		7319157C29CEDD5900ABBDE6 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7319157B29CEDD5900ABBDE6 /* HomeTabBarController.swift */; };
@@ -30,15 +33,20 @@
 		7355012D29CDEB7C00A1675B /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7355012C29CDEB7C00A1675B /* LoginViewController.swift */; };
 		7355012F29CDEB8500A1675B /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7355012E29CDEB8500A1675B /* RegisterViewController.swift */; };
 		738E26BF29CF07A10070A62A /* UIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738E26BE29CF07A10070A62A /* UIImageExtensions.swift */; };
-		738E26C129CF13AD0070A62A /* ServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738E26C029CF13AD0070A62A /* ServicesTableViewCell.swift */; };
-		738E26C529CF13E90070A62A /* ServicesCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738E26C429CF13E90070A62A /* ServicesCellModel.swift */; };
+		738E26C129CF13AD0070A62A /* ApplicationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738E26C029CF13AD0070A62A /* ApplicationsTableViewCell.swift */; };
+		738E26C529CF13E90070A62A /* ApplicationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738E26C429CF13E90070A62A /* ApplicationCell.swift */; };
+		738E26C729CF27990070A62A /* Montserrat-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 738E26C629CF27980070A62A /* Montserrat-Medium.ttf */; };
+		738E26CA29CF32300070A62A /* ServicesListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 738E26C929CF32300070A62A /* ServicesListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7302DFBF29CF3BAE00FC6937 /* ServiceListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListTableViewController.swift; sourceTree = "<group>"; };
+		7302DFC329CF3BF700FC6937 /* ServicesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTableViewCell.swift; sourceTree = "<group>"; };
+		7302DFC529CF3C1D00FC6937 /* ServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCell.swift; sourceTree = "<group>"; };
 		7319156329CED20400ABBDE6 /* UIResponder+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Utils.swift"; sourceTree = "<group>"; };
 		7319156529CED25500ABBDE6 /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		7319156829CED2CF00ABBDE6 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
-		7319157029CED8C500ABBDE6 /* ServicesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesViewController.swift; sourceTree = "<group>"; };
+		7319157029CED8C500ABBDE6 /* ApplicationsViewController.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsViewController.swift.swift; sourceTree = "<group>"; };
 		7319157929CEDB6700ABBDE6 /* UIColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColorExtensions.swift; sourceTree = "<group>"; };
 		7319157B29CEDD5900ABBDE6 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		7319157D29CEE08100ABBDE6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -58,8 +66,10 @@
 		7355012E29CDEB8500A1675B /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		7355013029CDED3300A1675B /* devhack-iOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "devhack-iOS.entitlements"; sourceTree = "<group>"; };
 		738E26BE29CF07A10070A62A /* UIImageExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIImageExtensions.swift; sourceTree = "<group>"; };
-		738E26C029CF13AD0070A62A /* ServicesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTableViewCell.swift; sourceTree = "<group>"; };
-		738E26C429CF13E90070A62A /* ServicesCellModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesCellModel.swift; sourceTree = "<group>"; };
+		738E26C029CF13AD0070A62A /* ApplicationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationsTableViewCell.swift; sourceTree = "<group>"; };
+		738E26C429CF13E90070A62A /* ApplicationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationCell.swift; sourceTree = "<group>"; };
+		738E26C629CF27980070A62A /* Montserrat-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Medium.ttf"; sourceTree = "<group>"; };
+		738E26C929CF32300070A62A /* ServicesListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesListViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +117,7 @@
 		7319156C29CED7C100ABBDE6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
-				7319156F29CED7D500ABBDE6 /* Services */,
+				7319156F29CED7D500ABBDE6 /* Applications */,
 				7319156E29CED7D100ABBDE6 /* Finances */,
 				7319156D29CED7CC00ABBDE6 /* Main */,
 				7319157B29CEDD5900ABBDE6 /* HomeTabBarController.swift */,
@@ -131,20 +141,22 @@
 			path = Finances;
 			sourceTree = "<group>";
 		};
-		7319156F29CED7D500ABBDE6 /* Services */ = {
+		7319156F29CED7D500ABBDE6 /* Applications */ = {
 			isa = PBXGroup;
 			children = (
-				7319157029CED8C500ABBDE6 /* ServicesViewController.swift */,
-				738E26C029CF13AD0070A62A /* ServicesTableViewCell.swift */,
-				738E26C429CF13E90070A62A /* ServicesCellModel.swift */,
+				738E26C829CF32110070A62A /* ServicesList */,
+				7319157029CED8C500ABBDE6 /* ApplicationsViewController.swift.swift */,
+				738E26C029CF13AD0070A62A /* ApplicationsTableViewCell.swift */,
+				738E26C429CF13E90070A62A /* ApplicationCell.swift */,
 			);
-			path = Services;
+			path = Applications;
 			sourceTree = "<group>";
 		};
 		7334724F29CEACFE00BA6430 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
 				7334725029CEAD1F00BA6430 /* Montserrat-Bold 700.ttf */,
+				738E26C629CF27980070A62A /* Montserrat-Medium.ttf */,
 				7334725229CEAD1F00BA6430 /* Montserrat-Regular.ttf */,
 				7334725129CEAD1F00BA6430 /* Montserrat-SemiBold 600.ttf */,
 			);
@@ -193,6 +205,17 @@
 				7355011029CDCAB600A1675B /* SceneDelegate.swift */,
 			);
 			path = App;
+			sourceTree = "<group>";
+		};
+		738E26C829CF32110070A62A /* ServicesList */ = {
+			isa = PBXGroup;
+			children = (
+				738E26C929CF32300070A62A /* ServicesListViewController.swift */,
+				7302DFBF29CF3BAE00FC6937 /* ServiceListTableViewController.swift */,
+				7302DFC329CF3BF700FC6937 /* ServicesTableViewCell.swift */,
+				7302DFC529CF3C1D00FC6937 /* ServiceCell.swift */,
+			);
+			path = ServicesList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -266,6 +289,7 @@
 				7334725529CEAD1F00BA6430 /* Montserrat-Regular.ttf in Resources */,
 				7355011B29CDCAB700A1675B /* LaunchScreen.storyboard in Resources */,
 				7334725429CEAD1F00BA6430 /* Montserrat-SemiBold 600.ttf in Resources */,
+				738E26C729CF27990070A62A /* Montserrat-Medium.ttf in Resources */,
 				7355011829CDCAB700A1675B /* Assets.xcassets in Resources */,
 				7355011629CDCAB600A1675B /* Main.storyboard in Resources */,
 				7334725329CEAD1F00BA6430 /* Montserrat-Bold 700.ttf in Resources */,
@@ -286,15 +310,19 @@
 				7355012D29CDEB7C00A1675B /* LoginViewController.swift in Sources */,
 				7319158029CEE10D00ABBDE6 /* FinancesViewController.swift in Sources */,
 				7319157A29CEDB6700ABBDE6 /* UIColorExtensions.swift in Sources */,
-				738E26C529CF13E90070A62A /* ServicesCellModel.swift in Sources */,
+				738E26C529CF13E90070A62A /* ApplicationCell.swift in Sources */,
 				7355012F29CDEB8500A1675B /* RegisterViewController.swift in Sources */,
 				7355010F29CDCAB600A1675B /* AppDelegate.swift in Sources */,
 				738E26BF29CF07A10070A62A /* UIImageExtensions.swift in Sources */,
-				738E26C129CF13AD0070A62A /* ServicesTableViewCell.swift in Sources */,
+				738E26CA29CF32300070A62A /* ServicesListViewController.swift in Sources */,
+				738E26C129CF13AD0070A62A /* ApplicationsTableViewCell.swift in Sources */,
 				7319156929CED2CF00ABBDE6 /* UITextFieldExtensions.swift in Sources */,
-				7319157129CED8C500ABBDE6 /* ServicesViewController.swift in Sources */,
+				7319157129CED8C500ABBDE6 /* ApplicationsViewController.swift.swift in Sources */,
 				7355011129CDCAB600A1675B /* SceneDelegate.swift in Sources */,
+				7302DFC429CF3BF700FC6937 /* ServicesTableViewCell.swift in Sources */,
+				7302DFC629CF3C1D00FC6937 /* ServiceCell.swift in Sources */,
 				7355012529CDE9B100A1675B /* AuthService.swift in Sources */,
+				7302DFC029CF3BAE00FC6937 /* ServiceListTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

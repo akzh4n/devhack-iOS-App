@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ServicesTableViewCell: UITableViewCell {
+class ApplicationsTableViewCell: UITableViewCell {
     
     
     @IBOutlet weak var reasonLabel: UILabel!
@@ -21,7 +21,7 @@ class ServicesTableViewCell: UITableViewCell {
     }
     
     
-    func set(object: ServiceModel) {
+    func set(object: ApplicationModel) {
         self.reasonLabel.text = object.reason
         self.executionTimeLabel.text = object.executionTime
         self.performerLabel.text = object.performer

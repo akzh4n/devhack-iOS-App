@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ServicesViewController: UIViewController {
+class ApplicationsViewController: UIViewController {
     
     @IBOutlet weak var segmentsBackground: UIView!
     @IBOutlet weak var exitButton: UIButton!
@@ -21,11 +21,7 @@ class ServicesViewController: UIViewController {
     @IBOutlet weak var applicationTableView: UITableView!
     
     @IBOutlet weak var historyTableView: UITableView!
-    
-    var objects = [
-        ServiceModel(reason: "Нассали в подьезд", executionTime: "3 дня", performer: "Заур Бердибеков", status: "в работе"),
-        ServiceModel(reason: "Лампочка сгорела в лифте", executionTime: "5 дней", performer: "Айбек Раушанов", status: "в обработке")
-    ]
+    var objects:[ApplicationModel] = []
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -88,26 +84,50 @@ class ServicesViewController: UIViewController {
         }
     }
     
+    func setLabel(text: String) {
+        
+    }
+    
     
 }
 
 
-extension ServicesViewController: UITableViewDelegate, UITableViewDataSource {
+extension ApplicationsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Return the number of rows for each table view
         if tableView == applicationTableView {
+            if objects.count == 0 {
+                let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+                label.text = "У вас нету активных заявок"
+                label.font = UIFont(name: "Montserrat-Medium", size: 16)
+                label.textColor = .gray
+                label.textAlignment = .center
+                tableView.backgroundView = label
+            } else {
+                tableView.backgroundView = nil
+            }
             return objects.count
         } else if tableView == historyTableView {
-            return 0 // Return zero rows for historyTableView
+            if objects.count == 0 {
+                let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
+                label.text = "Ваша история пуста"
+                label.textColor = .gray
+                label.textAlignment = .center
+                tableView.backgroundView = label
+            } else {
+                tableView.backgroundView = nil
+            }
+            return objects.count 
         }
         return 0
     }
+
     
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         // Configure the cells for each table view
         if tableView == applicationTableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "servicesCell", for: indexPath) as! ServicesTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "applicationCell", for: indexPath) as! ApplicationsTableViewCell
             let object = objects[indexPath.row]
             cell.contentView.layer.borderWidth = 1.0
             cell.contentView.layer.borderColor = UIColor.gray.cgColor
@@ -115,7 +135,7 @@ extension ServicesViewController: UITableViewDelegate, UITableViewDataSource {
             cell.set(object: object)
             return cell
         } else if tableView == historyTableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "servicesCell", for: indexPath) as! ServicesTableViewCell
+            let cell = tableView.dequeueReusableCell(withIdentifier: "applicationCell", for: indexPath) as! ApplicationsTableViewCell
             let object = objects[indexPath.row]
             cell.contentView.layer.borderWidth = 1.0
             cell.contentView.layer.borderColor = UIColor.gray.cgColor

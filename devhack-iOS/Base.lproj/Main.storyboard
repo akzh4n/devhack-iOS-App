@@ -1715,9 +1715,12 @@
                     <navigationItem key="navigationItem" id="cVI-qK-edF"/>
                     <connections>
                         <outlet property="exitButton" destination="UEc-dg-aWs" id="PSb-o7-hx9"/>
+                        <outlet property="firstCostLabel" destination="QmG-gU-Od5" id="Taw-Fs-OX4"/>
                         <outlet property="firstView" destination="nz4-p7-cZ4" id="QfL-Ew-FZs"/>
                         <outlet property="fourthVIew" destination="Vfr-pN-UKU" id="RqJ-Fi-X9l"/>
+                        <outlet property="secondCostLabel" destination="UVg-8h-Xvx" id="HOa-BD-ZgO"/>
                         <outlet property="secondView" destination="K4f-Ve-gFQ" id="FEW-Zv-zhC"/>
+                        <outlet property="thirdCostLabel" destination="RYC-fT-fYw" id="9Zi-1x-IFR"/>
                         <outlet property="thirdView" destination="yEZ-wr-nn1" id="cBp-h1-2zw"/>
                         <outlet property="topView" destination="oDg-D7-reU" id="OFY-gh-VwC"/>
                     </connections>

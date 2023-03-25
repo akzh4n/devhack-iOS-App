@@ -19,6 +19,7 @@ public extension UIColor {
     static let cardViewBackgroudColor = UIColor(red: 63/255, green: 62/255, blue: 60/255, alpha: 1)
     static let anotherCardViewBackgroudColor = UIColor(red: 63/255, green: 62/255, blue: 60/255, alpha: 0.22)
     static let redColor = UIColor(red: 167/255, green: 12/255, blue: 12/255, alpha: 1)
+    static let tableViewCardColor = UIColor(red: 17/255, green: 17/255, blue: 17/255, alpha: 0.7)
    
 }
 

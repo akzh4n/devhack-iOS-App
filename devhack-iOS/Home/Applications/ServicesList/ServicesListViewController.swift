@@ -29,8 +29,7 @@ class ServicesListViewController: UIViewController {
         leaveApplicationButton.layer.cornerRadius = 10
         
         
-        applicationListView.backgroundColor = .redColor
-        applicationListView.layer.cornerRadius = 10
+        applicationListView.backgroundColor = .tableViewCardColor
         
         
         SanAndCommButton.backgroundColor = .redColor

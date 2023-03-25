@@ -10,6 +10,8 @@
 		7302DFC029CF3BAE00FC6937 /* ServiceListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7302DFBF29CF3BAE00FC6937 /* ServiceListTableViewController.swift */; };
 		7302DFC429CF3BF700FC6937 /* ServicesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7302DFC329CF3BF700FC6937 /* ServicesTableViewCell.swift */; };
 		7302DFC629CF3C1D00FC6937 /* ServiceCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7302DFC529CF3C1D00FC6937 /* ServiceCell.swift */; };
+		7302DFC829CF4F9700FC6937 /* CreateApplicationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7302DFC729CF4F9700FC6937 /* CreateApplicationViewController.swift */; };
+		7302DFCA29CF700C00FC6937 /* PayViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7302DFC929CF700C00FC6937 /* PayViewController.swift */; };
 		7319156429CED20400ABBDE6 /* UIResponder+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7319156329CED20400ABBDE6 /* UIResponder+Utils.swift */; };
 		7319156629CED25500ABBDE6 /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7319156529CED25500ABBDE6 /* Validators.swift */; };
 		7319156929CED2CF00ABBDE6 /* UITextFieldExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7319156829CED2CF00ABBDE6 /* UITextFieldExtensions.swift */; };
@@ -43,6 +45,8 @@
 		7302DFBF29CF3BAE00FC6937 /* ServiceListTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceListTableViewController.swift; sourceTree = "<group>"; };
 		7302DFC329CF3BF700FC6937 /* ServicesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesTableViewCell.swift; sourceTree = "<group>"; };
 		7302DFC529CF3C1D00FC6937 /* ServiceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceCell.swift; sourceTree = "<group>"; };
+		7302DFC729CF4F9700FC6937 /* CreateApplicationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateApplicationViewController.swift; sourceTree = "<group>"; };
+		7302DFC929CF700C00FC6937 /* PayViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PayViewController.swift; sourceTree = "<group>"; };
 		7319156329CED20400ABBDE6 /* UIResponder+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIResponder+Utils.swift"; sourceTree = "<group>"; };
 		7319156529CED25500ABBDE6 /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		7319156829CED2CF00ABBDE6 /* UITextFieldExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITextFieldExtensions.swift; sourceTree = "<group>"; };
@@ -148,6 +152,7 @@
 				7319157029CED8C500ABBDE6 /* ApplicationsViewController.swift.swift */,
 				738E26C029CF13AD0070A62A /* ApplicationsTableViewCell.swift */,
 				738E26C429CF13E90070A62A /* ApplicationCell.swift */,
+				7302DFC729CF4F9700FC6937 /* CreateApplicationViewController.swift */,
 			);
 			path = Applications;
 			sourceTree = "<group>";
@@ -214,6 +219,7 @@
 				7302DFBF29CF3BAE00FC6937 /* ServiceListTableViewController.swift */,
 				7302DFC329CF3BF700FC6937 /* ServicesTableViewCell.swift */,
 				7302DFC529CF3C1D00FC6937 /* ServiceCell.swift */,
+				7302DFC929CF700C00FC6937 /* PayViewController.swift */,
 			);
 			path = ServicesList;
 			sourceTree = "<group>";
@@ -322,7 +328,9 @@
 				7302DFC429CF3BF700FC6937 /* ServicesTableViewCell.swift in Sources */,
 				7302DFC629CF3C1D00FC6937 /* ServiceCell.swift in Sources */,
 				7355012529CDE9B100A1675B /* AuthService.swift in Sources */,
+				7302DFCA29CF700C00FC6937 /* PayViewController.swift in Sources */,
 				7302DFC029CF3BAE00FC6937 /* ServiceListTableViewController.swift in Sources */,
+				7302DFC829CF4F9700FC6937 /* CreateApplicationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

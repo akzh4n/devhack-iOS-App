@@ -84,10 +84,7 @@ class ApplicationsViewController: UIViewController {
         }
     }
     
-    func setLabel(text: String) {
-        
-    }
-    
+ 
     
 }
 
@@ -117,7 +114,7 @@ extension ApplicationsViewController: UITableViewDelegate, UITableViewDataSource
             } else {
                 tableView.backgroundView = nil
             }
-            return objects.count 
+            return objects.count
         }
         return 0
     }

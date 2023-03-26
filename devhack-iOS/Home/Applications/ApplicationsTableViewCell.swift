@@ -22,6 +22,7 @@ class ApplicationsTableViewCell: UITableViewCell {
     
     
     
+ 
     func set(object: ApplicationModel) {
         if object.reason == nil {
             let reasonText = "Протекает холодильник нужна помощь"
@@ -38,7 +39,7 @@ class ApplicationsTableViewCell: UITableViewCell {
             let dateFormatter = DateFormatter()
             dateFormatter.dateFormat = "dd"
             let day = Int(dateFormatter.string(from: currentDate)) ?? 0
-            let remainingDays = max(0, Int(object.executionTime!)! - day)
+            let remainingDays = max(0, Int(object.executionTime)! - day)
             self.executionTimeLabel.text = "\(remainingDays) день"
         }
         

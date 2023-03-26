@@ -34,7 +34,19 @@ class AuthService {
         
         AF.request(loginEndpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
             switch response.result {
-            case .success:
+            case .success(let value):
+                
+                if let dict = value as? [String: Any],
+                   let userDict = dict["user"] as? [String: Any],
+                   let accessToken = userDict["accessToken"] as? String,
+                   let refreshToken = userDict["refreshToken"] as? String {
+                       self.keychain.set(accessToken, forKey: "access_token") // save access token
+                       self.keychain.set(refreshToken, forKey: "refresh_token") // save refresh token
+                       completion(.success(()))
+                } else {
+                   completion(.failure(AuthError.invalidResponse))
+                }
+                
                 if response.response?.statusCode == 400 {
                     completion(.failure(NSError(domain: "LoginError", code: 400, userInfo: [NSLocalizedDescriptionKey: "Invalid login credentials"])))
                 } else if response.response?.statusCode == 401 {

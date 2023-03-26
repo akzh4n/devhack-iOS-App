@@ -73,8 +73,10 @@ class ApplicationNetworkService {
         let request = AF.request(getMyAppEndpoint, method: .get, parameters: nil, encoding: JSONEncoding.default, headers: headers, interceptor: nil)
         
         request.responseJSON { response in
+            print(response.result)
             switch response.result {
             case .success(let data):
+                print("DATA: \(data)")
                 guard let json = data as? [String: Any],
                       let applicationsJSON = json["applications"] as? [[String: Any]]
                 else {

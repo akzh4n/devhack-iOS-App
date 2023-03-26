@@ -10,9 +10,9 @@ import Foundation
 
 
 struct ApplicationModel {
-    var reason: String?
-    var executionTime: String?
-    var performer: String?
-    var status: String?
+    var reason: String
+    var executionTime: String
+    var performer: String
+    var status: String
     
 }

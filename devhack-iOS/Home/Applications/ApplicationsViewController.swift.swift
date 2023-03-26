@@ -26,6 +26,8 @@ class ApplicationsViewController: UIViewController {
     var historyObjects = [ApplicationModel]()
     
     var totalObjects = [ApplicationModel]()
+    
+    
     var model: ApplicationModel?
     
     private var activityIndicatorView: UIActivityIndicatorView!
@@ -62,6 +64,58 @@ class ApplicationsViewController: UIViewController {
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .selected)
         segmentedControl.setTitleTextAttributes([NSAttributedString.Key.foregroundColor: UIColor.white], for: .normal)
         
+        applicationTableView.delegate = self
+        applicationTableView.dataSource = self
+        
+        historyTableView.delegate = self
+        historyTableView.dataSource = self
+        
+        
+        
+        ApplicationNetworkService.shared.getMyApplications { [unowned self] model in
+            DispatchQueue.main.async { [self] in
+//                var objects: [ApplicationModel] = []
+//
+                print("Our: \(model)")
+                for item in model {
+                    if let reason = item.title,
+                       let executor = item.executor,
+                       let status = item.status,
+                       let date = item.date {
+                        
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                        let dayFormatter = DateFormatter()
+                        dayFormatter.dateFormat = "dd"
+                        
+                        let executionDate = dateFormatter.date(from: date) ?? Date()
+                        let executionTime = dayFormatter.string(from: executionDate)
+                        let application = ApplicationModel(reason: reason, executionTime: executionTime, performer: executor, status: status)
+                        
+                        
+                        self.applicationObjects.append(application)
+                        print("Application: \(application)")
+                        totalObjects = applicationObjects + historyObjects
+            
+                        self.applicationObjects = self.totalObjects.filter { $0.status != "Выполнено" }
+                        self.historyObjects = self.totalObjects.filter { $0.status == "Выполнено" }
+                        
+                        self.applicationTableView.reloadData()
+                        self.applicationTableView.updateConstraints()
+                        
+                        
+                        self.historyTableView.reloadData()
+                        self.historyTableView.updateConstraints()
+                        
+                    }
+                }
+                
+                
+            
+                
+            }
+        }
+        
         
         applicationTableView.backgroundColor = .backgroundColor
         historyTableView.backgroundColor = .backgroundColor
@@ -69,17 +123,13 @@ class ApplicationsViewController: UIViewController {
         
         
         
-        applicationTableView.delegate = self
-        applicationTableView.dataSource = self
-        
-        historyTableView.delegate = self
-        historyTableView.dataSource = self
+     
         
         historyTableView.allowsSelection = false
         applicationTableView.allowsSelection = false
         
+     
         
-        getData()
     }
     
     
@@ -111,45 +161,7 @@ class ApplicationsViewController: UIViewController {
     }
     
     
-    func getData() {
-        
-
-        ApplicationNetworkService.shared.getMyApplications { [unowned self] model in
-            DispatchQueue.main.async { [self] in
-                var objects: [ApplicationModel] = []
-                
-                for item in model {
-                    if let reason = item.title,
-                       let executor = item.executor,
-                       let status = item.status,
-                       let date = item.date {
-                        
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                        let dayFormatter = DateFormatter()
-                        dayFormatter.dateFormat = "dd"
-                        
-                        let executionDate = dateFormatter.date(from: date) ?? Date()
-                        let executionTime = dayFormatter.string(from: executionDate)
-                        
-                        let application = ApplicationModel(reason: reason, executionTime: executionTime, performer: executor, status: status)
-                        self.applicationObjects.append(application)
-                    }
-                }
-                
-                
-                totalObjects = applicationObjects + historyObjects
-    
-                self.applicationObjects = self.totalObjects.filter { $0.status != "Выполнено" }
-                self.historyObjects = self.totalObjects.filter { $0.status == "Выполнено" }
-                
-                self.applicationTableView.reloadData()
-                self.historyTableView.reloadData()
-                
-            }
-        }
-    }
-    
+   
     
     func startActivityView() {
         view.alpha = 0.8

@@ -18,7 +18,7 @@ class PayViewController: UIViewController {
     
     @IBOutlet weak var apartmentTF: UITextField!
     @IBOutlet weak var complexTF: UITextField!
-    @IBOutlet weak var phoneNumberTF: UITextField!
+    @IBOutlet weak var categoryTF: UITextField!
     @IBOutlet weak var nameTF: UITextField!
     
     
@@ -32,6 +32,9 @@ class PayViewController: UIViewController {
     var price: String?
     var timeToComplete: String?
     
+    
+    private var activityIndicatorView: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -43,14 +46,12 @@ class PayViewController: UIViewController {
         payButton.layer.cornerRadius = 10
         
         
-        phoneNumberTF.addTarget(self, action: #selector(phoneTextFieldChanged), for: .editingChanged)
-        phoneNumberTF.delegate = self
-        
+      
         
         
         nameTF.placeholderColor(color: .white)
         complexTF.placeholderColor(color: .white)
-        phoneNumberTF.placeholderColor(color: .white)
+        categoryTF.placeholderColor(color: .white)
         apartmentTF.placeholderColor(color: .white)
         
         // To remove keyboard by tapping view
@@ -58,6 +59,18 @@ class PayViewController: UIViewController {
         view.addGestureRecognizer(tapGesture)
         
     }
+    
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // Initialize activity indicator view
+        activityIndicatorView = UIActivityIndicatorView(style: .large)
+        activityIndicatorView.color = .white
+        activityIndicatorView.center = view.center
+        activityIndicatorView.hidesWhenStopped = true
+        view.addSubview(activityIndicatorView)
+    }
+    
     
     
     
@@ -110,44 +123,63 @@ class PayViewController: UIViewController {
     
     
     
-    // PhoneTF
+   
     
-    @objc func phoneTextFieldChanged(_ sender: UITextField) {
-        guard let text = sender.text else { return }
-        if text.count == 0 { sender.text = "+7 7" }
-        if spacePositions.contains(text.count),
-           let last = text.last {
-            sender.text?.removeLast()
-            sender.text! += " \(last)"
-        }
-        
+    func startActivityView() {
+ 
+        activityIndicatorView.startAnimating()
     }
+    
+    
+    func stopActivityView() {
+       
+        activityIndicatorView.stopAnimating()
+    }
+    
     
     
     
     @IBAction func payButtonTapped(_ sender: Any) {
         
-        guard !phoneNumberTF.text!.isEmpty && !nameTF.text!.isEmpty && !apartmentTF.text!.isEmpty && !complexTF.text!.isEmpty else {
+        startActivityView()
+        
+        guard !categoryTF.text!.isEmpty && !nameTF.text!.isEmpty && !apartmentTF.text!.isEmpty && !complexTF.text!.isEmpty else {
             self.showAlert(with: "Ошибка", and: "Пожалуйста заполните все поля!")
             return
         }
-        self.showAlert(with: "Отлично", and: "Вы успешно оплатили!") {
-            self.navigationController?.popViewController(animated: true)
+        
+        
+        goToLink()
+        
+        
+        
+    }
+    
+    func goToLink() {
+        let title = serviceTypeLabel.text!
+        let category = categoryTF.text!
+        let price = priceLabel.text!.replacingOccurrences(of: " тг.", with: "")
+
+        ApplicationNetworkService.shared.createPayment(title: title, category: category, price: price) { result in
+            switch result {
+            case .success(let url):
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
+                    stopActivityView()
+                    guard let url = URL(string: url) else { return }
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+
+            case .failure(let failure):
+                print(failure)
+            }
         }
-        
-        
     }
     
     
 }
 
 
-extension PayViewController: UITextFieldDelegate {
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField.text?.count == 0 { textField.text = "+7 7" }
-        return true
-    }
-}
+
 
 
 

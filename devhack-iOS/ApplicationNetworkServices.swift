@@ -103,31 +103,30 @@ class ApplicationNetworkService {
     
     // CREATE PAYMENT
     
-    func createPayment(url: URL, title: String, category: String, price: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        let createAppEndpoint = "\(baseURL)/api/payments/createPayment"
+    func createPayment(title: String, category: String, price: String, completion: @escaping (Result<String, Error>) -> Void) {
+        let createPayEndpoint = "\(baseURL)/api/payments/createPayment"
         guard let accessToken = keychain.get("access_token") else {
-                  print("There are no refreshToken")
-                  return
-              }
-        let parameters = [
-            "title" : title,
-            "category": category,
-            "price" : price
-        ]
+            print("There are no refreshToken")
+            return
+        }
+        let parameters = [        "title" : title,        "category": category,        "price" : price    ]
         
-        let headers: HTTPHeaders = [
-            "Authorization" : "Bearer \(accessToken)"
-        ]
+        let headers: HTTPHeaders = [        "Authorization" : "Bearer \(accessToken)"    ]
         
-        AF.request(createAppEndpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
+        AF.request(createPayEndpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers).responseJSON { response in
             switch response.result {
-            case .success:
-                completion(.success(()))
+            case .success(let value):
+                if let json = value as? [String: Any], let payment = json["payment"] as? String {
+                    completion(.success(payment))
+                } else {
+                    completion(.failure(NSError(domain: "Error", code: 0, userInfo: [NSLocalizedDescriptionKey: "Unexpected response format"])))
+                }
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
+
     
     
     // GET FILTERED SERVICES

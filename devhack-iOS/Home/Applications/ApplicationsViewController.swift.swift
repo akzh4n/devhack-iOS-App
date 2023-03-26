@@ -75,6 +75,9 @@ class ApplicationsViewController: UIViewController {
         historyTableView.delegate = self
         historyTableView.dataSource = self
         
+        historyTableView.allowsSelection = false
+        applicationTableView.allowsSelection = false
+        
         
         getData()
     }

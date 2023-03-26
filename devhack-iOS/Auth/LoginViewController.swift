@@ -141,35 +141,34 @@ class LoginViewController: UIViewController {
     
     
     @IBAction func loginBtnTapped(_ sender: Any) {
-        
         startActivityView()
-        
-        guard Validators.isFilledLog(phonenumber: phoneNumberTF.text, password: passwordTF.text) else {
-            self.showAlert(with: "Ошибка", and: "Пожалуйста, заполните все поля!")
-            stopActivityView()
-            return
-        }
-        
-        let phone = phoneNumberTF.text!
-        let password = passwordTF.text!
-        
-        AuthService.shared.loginUser(phoneNumber: phone, password: password) { [self] result in
-         
-            switch result {
-            case .success(let success):
-                print(success)
-                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
-                    stopActivityView()
-                    self.showAlert(with: "Отлично", and: "Вы вошли в аккаунт!") {
-                        self.transitionToHome()
-                    }
-                }
-            case .failure(let failure):
-                print(failure)
-                self.showAlert(with: "Ошибка", and: "Пожалуйста, попробуйте еще раз")
-            }
-        }
-    }
+          
+          guard Validators.isFilledLog(phonenumber: phoneNumberTF.text, password: passwordTF.text) else {
+              self.showAlert(with: "Ошибка", and: "Пожалуйста, заполните все поля!")
+              stopActivityView()
+              return
+          }
+          
+          let phone = phoneNumberTF.text!
+          let password = passwordTF.text!
+          
+          AuthService.shared.loginUser(phoneNumber: phone, password: password) { [self] result in
+              stopActivityView()
+              
+              switch result {
+              case .success:
+                  self.showAlert(with: "Отлично", and: "Вы вошли в аккаунт!") {
+                      self.transitionToHome()
+                  }
+              case .failure(let error):
+                  if let nsError = error as NSError?, nsError.code == 400 || nsError.code == 401 {
+                      self.showAlert(with: "Ошибка", and: "Пароль неверный")
+                  } else {
+                      self.showAlert(with: "Ошибка", and: "Пожалуйста, попробуйте еще раз")
+                  }
+              }
+          }
+      }
     
     
     

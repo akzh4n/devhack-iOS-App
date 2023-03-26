@@ -35,12 +35,19 @@ class AuthService {
         AF.request(loginEndpoint, method: .post, parameters: parameters, encoding: JSONEncoding.default).responseJSON { response in
             switch response.result {
             case .success:
-                completion(.success(()))
+                if response.response?.statusCode == 400 {
+                    completion(.failure(NSError(domain: "LoginError", code: 400, userInfo: [NSLocalizedDescriptionKey: "Invalid login credentials"])))
+                } else if response.response?.statusCode == 401 {
+                    completion(.failure(NSError(domain: "LoginError", code: 401, userInfo: [NSLocalizedDescriptionKey: "Unauthorized access"])))
+                } else {
+                    completion(.success(()))
+                }
             case .failure(let error):
                 completion(.failure(error))
             }
         }
     }
+
     
     // MARK: - REGISTER USER
     

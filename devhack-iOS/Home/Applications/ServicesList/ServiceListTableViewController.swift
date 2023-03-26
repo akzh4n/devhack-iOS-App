@@ -24,6 +24,7 @@ class ServiceListTableViewController: UITableViewController {
         tableView.tableHeaderView?.tintColor = .redColor
         tableView.backgroundColor = .backgroundColor
         
+        
         getData()
         
         
@@ -60,7 +61,7 @@ class ServiceListTableViewController: UITableViewController {
             if let destinationVC = segue.destination as? PayViewController,
                let indexPath = tableView.indexPathForSelectedRow {
                 let selectedService = filteredObjects[indexPath.row]
-                destinationVC.price = selectedService.serviceCost
+                destinationVC.price = "\(selectedService.serviceCost) тг."
                 destinationVC.typeName = selectedService.serviceType
                 destinationVC.timeToComplete = selectedService.serviceExecutionTime
             }
@@ -104,6 +105,18 @@ class ServiceListTableViewController: UITableViewController {
             headerView.textLabel?.textColor = .white
         }
     }
+    
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = tableView.cellForRow(at: indexPath)!
+            
+        cell.backgroundColor = .backgroundColor
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            cell.backgroundColor = .tableViewCardColor
+           }
+           
+    }
+  
     
     
     

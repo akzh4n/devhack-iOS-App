@@ -25,8 +25,25 @@ class CreateApplicationViewController: UIViewController {
     var spacePositions: [Int] { [3, 7, 11, 14] }
     
     
+
+    private let categoryPickerView = UIPickerView()
+    
+    let categoryList = ["Сантехника и коммуникация", "Мелкий ремонт", "Электротехника"]
+    var selectedCategory: String?
+    
+    
+    
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        categoryPickerView.delegate = self
+        categoryPickerView.dataSource = self
+        categoryTF.inputView = categoryPickerView
+        
+        
         
         sendApplicationButton.backgroundColor = .redColor
         sendApplicationButton.layer.cornerRadius = 10
@@ -181,5 +198,28 @@ extension CreateApplicationViewController {
         }
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
+    }
+}
+
+
+extension CreateApplicationViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categoryList.count
+    }
+    
+    // MARK: - UIPickerViewDelegate
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return categoryList[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedCategory = categoryList[row]
+        categoryTF.text = selectedCategory
     }
 }

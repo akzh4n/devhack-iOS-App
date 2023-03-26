@@ -165,6 +165,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		731C42D029D0581500180755 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				7355012429CDE9B100A1675B /* AuthService.swift */,
+				731C42C529CFB61F00180755 /* ApplicationNetworkServices.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		7334724F29CEACFE00BA6430 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +204,7 @@
 		7355010D29CDCAB600A1675B /* devhack-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				731C42D029D0581500180755 /* Services */,
 				731C42C729CFB84C00180755 /* Models */,
 				7319156C29CED7C100ABBDE6 /* Home */,
 				7319156729CED2C100ABBDE6 /* Extensions */,
@@ -206,8 +216,6 @@
 				7355011929CDCAB700A1675B /* LaunchScreen.storyboard */,
 				7355011C29CDCAB700A1675B /* Info.plist */,
 				7355013029CDED3300A1675B /* devhack-iOS.entitlements */,
-				7355012429CDE9B100A1675B /* AuthService.swift */,
-				731C42C529CFB61F00180755 /* ApplicationNetworkServices.swift */,
 			);
 			path = "devhack-iOS";
 			sourceTree = "<group>";

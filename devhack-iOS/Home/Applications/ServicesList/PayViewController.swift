@@ -23,6 +23,7 @@ class PayViewController: UIViewController {
     
     
     
+    
     @IBOutlet weak var payButton: UIButton!
     
     var spacePositions: [Int] { [3, 7, 11, 14] }
@@ -31,6 +32,10 @@ class PayViewController: UIViewController {
     var typeName: String?
     var price: String?
     var timeToComplete: String?
+    
+    private let categoryPickerView = UIPickerView()
+    let categoryList = ["Сантехника и коммуникация", "Мелкий ремонт", "Электротехника"]
+    var selectedCategory: String?
     
     
     private var activityIndicatorView: UIActivityIndicatorView!
@@ -44,9 +49,12 @@ class PayViewController: UIViewController {
         
         payButton.backgroundColor = .redColor
         payButton.layer.cornerRadius = 10
+        categoryPickerView.delegate = self
+        categoryPickerView.dataSource = self
+        categoryTF.inputView = categoryPickerView
         
         
-      
+        
         
         
         nameTF.placeholderColor(color: .white)
@@ -104,18 +112,18 @@ class PayViewController: UIViewController {
         guard let userInfo = sender.userInfo,
               let keyboardFrame = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? CGRect,
               let currentTextField = UIResponder.currentFirst() as? UITextField else { return }
-
+        
         let keyboardHeight = keyboardFrame.size.height
         let convertedTextFieldFrame = view.convert(currentTextField.frame, from: currentTextField.superview)
         let textFieldBottomY = convertedTextFieldFrame.origin.y + convertedTextFieldFrame.size.height
-
+        
         // if textField bottom is below keyboard bottom - bump the frame up
         if textFieldBottomY > keyboardHeight {
             let distance = textFieldBottomY - keyboardHeight
             view.frame.origin.y = -distance
         }
     }
-
+    
     
     @objc func keyboardWillHide(notification: NSNotification) {
         view.frame.origin.y = 0
@@ -123,16 +131,16 @@ class PayViewController: UIViewController {
     
     
     
-   
+    
     
     func startActivityView() {
- 
+        
         activityIndicatorView.startAnimating()
     }
     
     
     func stopActivityView() {
-       
+        
         activityIndicatorView.stopAnimating()
     }
     
@@ -159,7 +167,7 @@ class PayViewController: UIViewController {
         let title = serviceTypeLabel.text!
         let category = categoryTF.text!
         let price = priceLabel.text!.replacingOccurrences(of: " тг.", with: "")
-
+        
         ApplicationNetworkService.shared.createPayment(title: title, category: category, price: price) { result in
             switch result {
             case .success(let url):
@@ -168,7 +176,7 @@ class PayViewController: UIViewController {
                     guard let url = URL(string: url) else { return }
                     UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 }
-
+                
             case .failure(let failure):
                 print(failure)
             }
@@ -193,5 +201,29 @@ extension PayViewController {
         }
         alertController.addAction(okAction)
         present(alertController, animated: true, completion: nil)
+    }
+}
+
+
+extension PayViewController: UIPickerViewDelegate, UIPickerViewDataSource {
+    
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return categoryList.count
+    }
+    
+    // MARK: - UIPickerViewDelegate
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return categoryList[row]
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        selectedCategory = categoryList[row]
+        categoryTF.text = selectedCategory
     }
 }

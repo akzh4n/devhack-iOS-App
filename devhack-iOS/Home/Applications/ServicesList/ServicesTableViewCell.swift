@@ -26,7 +26,7 @@ class ServicesTableViewCell: UITableViewCell {
             let serviceCostText = "0 тг."
             self.serviceCostLabel.text = serviceCostText
         } else {
-            self.serviceCostLabel.text = object.serviceCost
+            self.serviceCostLabel.text = "\(object.serviceCost) тг."
         }
         
         if object.serviceExecutionTime == nil {

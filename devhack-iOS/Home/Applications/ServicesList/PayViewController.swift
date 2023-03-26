@@ -28,8 +28,16 @@ class PayViewController: UIViewController {
     var spacePositions: [Int] { [3, 7, 11, 14] }
     
     
+    var typeName: String?
+    var price: String?
+    var timeToComplete: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        serviceTypeLabel.text = typeName
+        priceLabel.text = price
+        executionTimeLabel.text = timeToComplete
         
         payButton.backgroundColor = .redColor
         payButton.layer.cornerRadius = 10

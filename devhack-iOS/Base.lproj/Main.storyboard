@@ -1474,7 +1474,7 @@
                                     <outlet property="serviceCostLabel" destination="15O-pK-0xN" id="fHB-m1-hKL"/>
                                     <outlet property="serviceExecutionTImeLabel" destination="XZp-ec-K0E" id="vIl-jj-4Ge"/>
                                     <outlet property="serviceTypeLabel" destination="mka-HN-8II" id="QVz-K7-ufY"/>
-                                    <segue destination="ptF-xb-7m5" kind="presentation" id="fxc-x5-hig"/>
+                                    <segue destination="ptF-xb-7m5" kind="presentation" identifier="goToPayment" id="fxc-x5-hig"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

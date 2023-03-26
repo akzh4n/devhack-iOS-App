@@ -14,4 +14,5 @@ struct ServiceModel {
     var serviceType: String
     var serviceCost: String
     var serviceExecutionTime: String
+    var serviceCategory: String
 }

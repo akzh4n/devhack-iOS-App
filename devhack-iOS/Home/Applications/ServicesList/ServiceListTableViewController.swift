@@ -8,7 +8,7 @@
 import UIKit
 
 class ServiceListTableViewController: UITableViewController {
-
+    
     
     
     var model: ServiceModel?
@@ -24,17 +24,27 @@ class ServiceListTableViewController: UITableViewController {
         tableView.tableHeaderView?.tintColor = .redColor
         tableView.backgroundColor = .backgroundColor
         
+        getData()
         
         
+    }
+    
+    
+    
+    func getData() {
         ApplicationNetworkService.shared.getMyFilteredServices { [unowned self] model in
             DispatchQueue.main.async { [self] in
+                
                 
                 for item in model {
                     if let price = item.price,
                        let timeToComplete = item.time_to_complete,
-                       let typeName = item.name{
-                        let service = ServiceModel(serviceType: typeName, serviceCost: String(price), serviceExecutionTime: timeToComplete)
+                       let typeName = item.name,
+                       let category = item.category {
+                        let service = ServiceModel(serviceType: typeName, serviceCost: String(price), serviceExecutionTime: timeToComplete, serviceCategory: category)
+                        
                         self.serviceObjects.append(service)
+                        self.filteredObjects = serviceObjects.filter { $0.serviceCategory == headerText}
                         self.tableView.updateConstraints()
                         self.tableView.reloadData()
                         
@@ -42,14 +52,24 @@ class ServiceListTableViewController: UITableViewController {
                 }
             }
         }
-        
-        
-        
     }
-
+    
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "goToPayment" {
+            if let destinationVC = segue.destination as? PayViewController,
+               let indexPath = tableView.indexPathForSelectedRow {
+                let selectedService = filteredObjects[indexPath.row]
+                destinationVC.price = selectedService.serviceCost
+                destinationVC.typeName = selectedService.serviceType
+                destinationVC.timeToComplete = selectedService.serviceExecutionTime
+            }
+        }
+    }
+    
+    
+    
     // MARK: - Table view data source
-
-  
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         guard let headerText = headerText else { return nil }
         
@@ -61,15 +81,15 @@ class ServiceListTableViewController: UITableViewController {
         
         return attributedString.string
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return serviceObjects.count
+        return filteredObjects.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "serviceCell", for: indexPath) as! ServicesTableViewCell
-        let object = serviceObjects[indexPath.row]
+        let object = filteredObjects[indexPath.row]
         cell.contentView.layer.borderWidth = 1.0
         cell.contentView.layer.borderColor = UIColor.gray.cgColor
         cell.contentView.layer.cornerRadius = 5.0
@@ -95,10 +115,6 @@ class ServiceListTableViewController: UITableViewController {
         return 50
     }
     
-   
-
     
-    
-   
-
 }
+

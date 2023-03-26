@@ -29,58 +29,12 @@ class ApplicationsViewController: UIViewController {
     var model: ApplicationModel?
     
     private var activityIndicatorView: UIActivityIndicatorView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        ApplicationNetworkService.shared.getMyApplications { [unowned self] model in
-            DispatchQueue.main.async { [self] in
-                var objects: [ApplicationModel] = []
-                
-                for item in model {
-                    if let reason = item.title,
-                       let executor = item.executor,
-                       let status = item.status,
-                       let date = item.date {
-                        
-                        let dateFormatter = DateFormatter()
-                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
-                        let dayFormatter = DateFormatter()
-                        dayFormatter.dateFormat = "dd"
-                        
-                        let executionDate = dateFormatter.date(from: date) ?? Date()
-                        let executionTime = dayFormatter.string(from: executionDate)
-                        
-                        let application = ApplicationModel(reason: reason, executionTime: executionTime, performer: executor, status: status)
-                        self.applicationObjects.append(application)
-                    }
-                }
-                
-                
-                totalObjects = applicationObjects + historyObjects
-                
-                // Remove the elements that have a status of "Выполнено" from applicationObjects
-                self.applicationObjects = self.totalObjects.filter { $0.status != "Выполнено" }
-
-                
-                
-                // Filter out the elements that have a status other than "Выполнено" and assign the filtered result to historyObjects
-                
-                self.historyObjects = self.totalObjects.filter { $0.status == "Выполнено" }
-                
-                self.applicationTableView.reloadData()
-                self.historyTableView.reloadData()
-                
-                
-                
-                
-                applicationTableView.allowsSelection = false
-                historyTableView.allowsSelection = false
-                
-                
-                
-            }
-        }
+    
         
         self.view.backgroundColor = .backgroundColor
         
@@ -90,7 +44,6 @@ class ApplicationsViewController: UIViewController {
         segmentsBackground.backgroundColor = .topViewBackgroundColor
         
         serviceBackgroundView.backgroundColor = .redColor
-        
         
         
         addServiceButton.layer.cornerRadius = 20
@@ -121,18 +74,25 @@ class ApplicationsViewController: UIViewController {
         
         historyTableView.delegate = self
         historyTableView.dataSource = self
+        
+        
+        getData()
     }
     
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+        
+        
         // Initialize activity indicator view
         activityIndicatorView = UIActivityIndicatorView(style: .large)
         activityIndicatorView.color = .white
         activityIndicatorView.center = view.center
         activityIndicatorView.hidesWhenStopped = true
         view.addSubview(activityIndicatorView)
+   
     }
+    
     
     
     
@@ -144,6 +104,46 @@ class ApplicationsViewController: UIViewController {
             historyTableView.reloadData()
         default:
             break
+        }
+    }
+    
+    
+    func getData() {
+        
+
+        ApplicationNetworkService.shared.getMyApplications { [unowned self] model in
+            DispatchQueue.main.async { [self] in
+                var objects: [ApplicationModel] = []
+                
+                for item in model {
+                    if let reason = item.title,
+                       let executor = item.executor,
+                       let status = item.status,
+                       let date = item.date {
+                        
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                        let dayFormatter = DateFormatter()
+                        dayFormatter.dateFormat = "dd"
+                        
+                        let executionDate = dateFormatter.date(from: date) ?? Date()
+                        let executionTime = dayFormatter.string(from: executionDate)
+                        
+                        let application = ApplicationModel(reason: reason, executionTime: executionTime, performer: executor, status: status)
+                        self.applicationObjects.append(application)
+                    }
+                }
+                
+                
+                totalObjects = applicationObjects + historyObjects
+    
+                self.applicationObjects = self.totalObjects.filter { $0.status != "Выполнено" }
+                self.historyObjects = self.totalObjects.filter { $0.status == "Выполнено" }
+                
+                self.applicationTableView.reloadData()
+                self.historyTableView.reloadData()
+                
+            }
         }
     }
     

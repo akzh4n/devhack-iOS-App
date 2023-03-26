@@ -12,14 +12,15 @@ class CreateApplicationViewController: UIViewController {
     @IBOutlet weak var createProblemTextView: UITextView!
     
     
-    @IBOutlet weak var apartmentTF: UITextField!
     @IBOutlet weak var complexTF: UITextField!
-    @IBOutlet weak var phoneNumberTF: UITextField!
-    @IBOutlet weak var nameTF: UITextField!
+    @IBOutlet weak var categoryTF: UITextField!
+    @IBOutlet weak var titleTF: UITextField!
+    @IBOutlet weak var priceTF: UITextField!
     
     
     @IBOutlet weak var sendApplicationButton: UIButton!
     
+    private var activityIndicatorView: UIActivityIndicatorView!
     
     var spacePositions: [Int] { [3, 7, 11, 14] }
     
@@ -32,22 +33,29 @@ class CreateApplicationViewController: UIViewController {
         
         
         createProblemTextView.backgroundColor = .applicationFillColor
-        
-        phoneNumberTF.addTarget(self, action: #selector(phoneTextFieldChanged), for: .editingChanged)
-        phoneNumberTF.delegate = self
-        
-        
-        
-        nameTF.placeholderColor(color: .white)
+       
+        titleTF.placeholderColor(color: .white)
         complexTF.placeholderColor(color: .white)
-        phoneNumberTF.placeholderColor(color: .white)
-        apartmentTF.placeholderColor(color: .white)
+        categoryTF.placeholderColor(color: .white)
+        priceTF.placeholderColor(color: .white)
+        
         
         // To remove keyboard by tapping view
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
 
     }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // Initialize activity indicator view
+        activityIndicatorView = UIActivityIndicatorView(style: .large)
+        activityIndicatorView.color = .white
+        activityIndicatorView.center = view.center
+        activityIndicatorView.hidesWhenStopped = true
+        view.addSubview(activityIndicatorView)
+    }
+    
     
     
     // Keyboard settings to hide and show
@@ -99,30 +107,60 @@ class CreateApplicationViewController: UIViewController {
     
     
     
-    // PhoneTF
+  
     
-    @objc func phoneTextFieldChanged(_ sender: UITextField) {
-        guard let text = sender.text else { return }
-        if text.count == 0 { sender.text = "+7 7" }
-        if spacePositions.contains(text.count),
-           let last = text.last {
-            sender.text?.removeLast()
-            sender.text! += " \(last)"
-        }
-        
-    }
     
+    
+      
+      func startActivityView() {
+          view.alpha = 0.8
+          activityIndicatorView.startAnimating()
+      }
+      
+      
+      func stopActivityView() {
+          view.alpha = 1.0
+          activityIndicatorView.stopAnimating()
+      }
+      
     
     
     @IBAction func sendApplicationTapped(_ sender: Any) {
         
-        guard !phoneNumberTF.text!.isEmpty && !nameTF.text!.isEmpty && !apartmentTF.text!.isEmpty && !complexTF.text!.isEmpty else {
-            self.showAlert(with: "Ошибка", and: "Пожалуйста заполните все поля!")
+        startActivityView()
+        let title = titleTF.text!
+        let category = categoryTF.text!
+        let description = createProblemTextView.text!
+        guard let price = Int(priceTF.text ?? "") else {
+            print("Price error")
             return
         }
-        self.showAlert(with: "Отлично", and: "Вы успешно отправили заявку!") {
-            self.navigationController?.popViewController(animated: true)
+
+        // Use the integer value here
+
+        let status = "На рассмотрении"
+        guard !priceTF.text!.isEmpty && !categoryTF.text!.isEmpty  && !complexTF.text!.isEmpty && !titleTF.text!.isEmpty else {
+            self.showAlert(with: "Ошибка", and: "Пожалуйста заполните все поля!")
+            stopActivityView()
+            return
         }
+        
+        ApplicationNetworkService.shared.createApplication(description: description, title: title, category: category, price: price, status: status) { [self] result in
+            switch result {
+            case .success(let success):
+                print("Успешно: \(success)")
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
+                    self.showAlert(with: "Отлично", and: "Вы успешно отправили заявку!") {
+                        self.navigationController?.popViewController(animated: true)
+                    }
+                }
+                stopActivityView()
+            case .failure(let failure):
+                print("Ошибка: \(failure)")
+            }
+        }
+        
+     
         
        
     }
@@ -130,13 +168,6 @@ class CreateApplicationViewController: UIViewController {
 
 }
 
-
-extension CreateApplicationViewController: UITextFieldDelegate {
-    func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        if textField.text?.count == 0 { textField.text = "+7 7" }
-        return true
-    }
-}
 
 
 

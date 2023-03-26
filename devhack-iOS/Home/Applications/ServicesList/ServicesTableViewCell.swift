@@ -22,11 +22,29 @@ class ServicesTableViewCell: UITableViewCell {
     
     
     func set(object: ServiceModel) {
-        self.serviceTypeLabel.text = object.serviceType
-        self.serviceCostLabel.text = object.serviceCost
-        self.serviceExecutionTImeLabel.text = object.serviceExecutionTime
+        if object.serviceCost == nil {
+            let serviceCostText = "0 тг."
+            self.serviceCostLabel.text = serviceCostText
+        } else {
+            self.serviceCostLabel.text = object.serviceCost
+        }
+        
+        if object.serviceExecutionTime == nil {
+            let serviceExecutionTimeText = "1 рабочий день"
+            self.serviceExecutionTImeLabel.text = serviceExecutionTimeText
+        } else {
+            self.serviceExecutionTImeLabel.text = object.serviceExecutionTime
+        }
+        
+        if object.serviceType == nil {
+            let serviceTypeText = "Не указано"
+            self.serviceTypeLabel.text = serviceTypeText
+        } else {
+            self.serviceTypeLabel.text = object.serviceType
+        }
+        
+  
     }
-
    
 
 }

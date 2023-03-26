@@ -21,12 +21,47 @@ class ApplicationsTableViewCell: UITableViewCell {
     }
     
     
+    
     func set(object: ApplicationModel) {
-        self.reasonLabel.text = object.reason
-        self.executionTimeLabel.text = object.executionTime
-        self.performerLabel.text = object.performer
-        self.statusLabel.text = object.status
+        if object.reason == nil {
+            let reasonText = "Протекает холодильник нужна помощь"
+            self.reasonLabel.text = reasonText
+        } else {
+            self.reasonLabel.text = object.reason
+        }
+        
+        if object.executionTime == nil {
+            let executionTimeText = "1 день"
+            self.executionTimeLabel.text = executionTimeText
+        } else {
+            let currentDate = Date()
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "dd"
+            let day = Int(dateFormatter.string(from: currentDate)) ?? 0
+            let remainingDays = max(0, Int(object.executionTime!)! - day)
+            self.executionTimeLabel.text = "\(remainingDays) день"
+        }
+        
+        
+        
+        if object.performer == nil {
+            let performerText = "Калиматов Акжан"
+            self.performerLabel.text = performerText
+        } else {
+            self.performerLabel.text = object.performer
+        }
+        
+        
+        if object.status == nil {
+            let statusText = "В рассмотрении"
+            self.statusLabel.text = statusText
+        } else {
+            self.statusLabel.text = object.status
+        }
+        
+  
     }
+
 
    
 

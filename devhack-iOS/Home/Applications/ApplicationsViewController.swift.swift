@@ -1,5 +1,5 @@
 //
-//  ServicesViewController.swift
+//  ApplicationsViewController.swift
 //  devhack-iOS
 //
 //  Created by Акжан Калиматов on 25.03.2023.
@@ -21,12 +21,66 @@ class ApplicationsViewController: UIViewController {
     @IBOutlet weak var applicationTableView: UITableView!
     
     @IBOutlet weak var historyTableView: UITableView!
-    var objects:[ApplicationModel] = []
+    
+    var applicationObjects = [ApplicationModel]()
+    var historyObjects = [ApplicationModel]()
+    
+    var totalObjects = [ApplicationModel]()
+    var model: ApplicationModel?
+    
+    private var activityIndicatorView: UIActivityIndicatorView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
+        ApplicationNetworkService.shared.getMyApplications { [unowned self] model in
+            DispatchQueue.main.async { [self] in
+                var objects: [ApplicationModel] = []
+                
+                for item in model {
+                    if let reason = item.title,
+                       let executor = item.executor,
+                       let status = item.status,
+                       let date = item.date {
+                        
+                        let dateFormatter = DateFormatter()
+                        dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSZ"
+                        let dayFormatter = DateFormatter()
+                        dayFormatter.dateFormat = "dd"
+                        
+                        let executionDate = dateFormatter.date(from: date) ?? Date()
+                        let executionTime = dayFormatter.string(from: executionDate)
+                        
+                        let application = ApplicationModel(reason: reason, executionTime: executionTime, performer: executor, status: status)
+                        self.applicationObjects.append(application)
+                    }
+                }
+                
+                
+                totalObjects = applicationObjects + historyObjects
+                
+                // Remove the elements that have a status of "Выполнено" from applicationObjects
+                self.applicationObjects = self.totalObjects.filter { $0.status != "Выполнено" }
+
+                
+                
+                // Filter out the elements that have a status other than "Выполнено" and assign the filtered result to historyObjects
+                
+                self.historyObjects = self.totalObjects.filter { $0.status == "Выполнено" }
+                
+                self.applicationTableView.reloadData()
+                self.historyTableView.reloadData()
+                
+                
+                
+                
+                applicationTableView.allowsSelection = false
+                historyTableView.allowsSelection = false
+                
+                
+                
+            }
+        }
         
         self.view.backgroundColor = .backgroundColor
         
@@ -70,30 +124,78 @@ class ApplicationsViewController: UIViewController {
     }
     
     
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // Initialize activity indicator view
+        activityIndicatorView = UIActivityIndicatorView(style: .large)
+        activityIndicatorView.color = .white
+        activityIndicatorView.center = view.center
+        activityIndicatorView.hidesWhenStopped = true
+        view.addSubview(activityIndicatorView)
+    }
+    
+    
     
     @IBAction func segmentedControlValueChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            applicationTableView.isHidden = false
-            historyTableView.isHidden = true
+            applicationTableView.reloadData()
         case 1:
-            applicationTableView.isHidden = true
-            historyTableView.isHidden = false
+            historyTableView.reloadData()
         default:
             break
         }
     }
     
- 
+    
+    func startActivityView() {
+        view.alpha = 0.8
+        activityIndicatorView.startAnimating()
+    }
+    
+    
+    func stopActivityView() {
+        view.alpha = 1.0
+        activityIndicatorView.stopAnimating()
+    }
+    
+    
+    @IBAction func exitButtonTapped(_ sender: Any) {
+        startActivityView()
+        AuthService.shared.logoutUser { [self] result in
+            switch result {
+            case .success(let success):
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
+                    stopActivityView()
+                    self.showAlert(with: "Напоминание", and: "Вы вышли из аккаунта!") {
+                        self.transitionToLogin()
+                    }
+                }
+            case .failure(let failure):
+                print(failure)
+            }
+        }
+    }
+    
+    
+    // Go to LoginVC
+    
+    func transitionToLogin() {
+        
+        let loginVC = storyboard?.instantiateViewController(withIdentifier: "NavigationLoginVC") as? UINavigationController
+        view.window?.rootViewController = loginVC
+        view.window?.makeKeyAndVisible()
+    }
+    
+    
     
 }
 
 
 extension ApplicationsViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // Return the number of rows for each table view
-        if tableView == applicationTableView {
-            if objects.count == 0 {
+        if segmentedControl.selectedSegmentIndex == 0 {
+            if applicationObjects.count == 0 {
                 let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
                 label.text = "У вас нету активных заявок"
                 label.font = UIFont(name: "Montserrat-Medium", size: 16)
@@ -103,47 +205,57 @@ extension ApplicationsViewController: UITableViewDelegate, UITableViewDataSource
             } else {
                 tableView.backgroundView = nil
             }
-            return objects.count
-        } else if tableView == historyTableView {
-            if objects.count == 0 {
+            return applicationObjects.count
+        } else {
+            if historyObjects.count == 0 {
                 let label = UILabel(frame: CGRect(x: 0, y: 0, width: tableView.bounds.size.width, height: tableView.bounds.size.height))
                 label.text = "Ваша история пуста"
+                label.font = UIFont(name: "Montserrat-Medium", size: 16)
                 label.textColor = .gray
                 label.textAlignment = .center
                 tableView.backgroundView = label
             } else {
                 tableView.backgroundView = nil
             }
-            return objects.count
+            return historyObjects.count
         }
-        return 0
     }
-
-    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        // Configure the cells for each table view
-        if tableView == applicationTableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "applicationCell", for: indexPath) as! ApplicationsTableViewCell
-            let object = objects[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: "applicationCell", for: indexPath) as! ApplicationsTableViewCell
+        
+        if segmentedControl.selectedSegmentIndex == 0 {
+            let application = applicationObjects[indexPath.row]
             cell.contentView.layer.borderWidth = 1.0
             cell.contentView.layer.borderColor = UIColor.gray.cgColor
             cell.contentView.layer.cornerRadius = 5.0
-            cell.set(object: object)
-            return cell
-        } else if tableView == historyTableView {
-            let cell = tableView.dequeueReusableCell(withIdentifier: "applicationCell", for: indexPath) as! ApplicationsTableViewCell
-            let object = objects[indexPath.row]
+            cell.set(object: application)
+        } else {
+            let history = historyObjects[indexPath.row]
             cell.contentView.layer.borderWidth = 1.0
             cell.contentView.layer.borderColor = UIColor.gray.cgColor
             cell.contentView.layer.cornerRadius = 5.0
-            cell.set(object: object)
-            return cell
+            cell.set(object: history)
         }
-        return UITableViewCell()
+        
+        return cell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 160
+    }
+}
+
+
+// Extenstion for special alerts
+
+extension ApplicationsViewController {
+    func showAlert(with title: String, and message: String, completion: @escaping () -> Void = { }) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+            completion()
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
     }
 }

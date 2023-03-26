@@ -10,14 +10,11 @@ import UIKit
 class ServiceListTableViewController: UITableViewController {
 
     
-    var objects = [
-        ServiceModel(serviceType: "Замена крана", serviceCost: "2000 тг.", serviceExecutionTime: "1 рабочий день"),
-        ServiceModel(serviceType: "Ремонт стиралки", serviceCost: "5000 тг.", serviceExecutionTime: "2 рабочий день")
-    ]
     
-    
+    var model: ServiceModel?
     var headerText: String?
-    
+    var serviceObjects = [ServiceModel]()
+    var filteredObjects = [ServiceModel]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +25,23 @@ class ServiceListTableViewController: UITableViewController {
         tableView.backgroundColor = .backgroundColor
         
         
+        
+        ApplicationNetworkService.shared.getMyFilteredServices { [unowned self] model in
+            DispatchQueue.main.async { [self] in
+                
+                for item in model {
+                    if let price = item.price,
+                       let timeToComplete = item.time_to_complete,
+                       let typeName = item.name{
+                        let service = ServiceModel(serviceType: typeName, serviceCost: String(price), serviceExecutionTime: timeToComplete)
+                        self.serviceObjects.append(service)
+                        self.tableView.updateConstraints()
+                        self.tableView.reloadData()
+                        
+                    }
+                }
+            }
+        }
         
         
         
@@ -50,12 +64,12 @@ class ServiceListTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return objects.count
+        return serviceObjects.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "serviceCell", for: indexPath) as! ServicesTableViewCell
-        let object = objects[indexPath.row]
+        let object = serviceObjects[indexPath.row]
         cell.contentView.layer.borderWidth = 1.0
         cell.contentView.layer.borderColor = UIColor.gray.cgColor
         cell.contentView.layer.cornerRadius = 5.0

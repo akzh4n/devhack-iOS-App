@@ -10,10 +10,11 @@ import Foundation
 
 class Validators {
     
-    static func isFilledReg(username: String?, surename: String?, email: String?, password: String?) -> Bool {
-        guard !(username ?? "").isEmpty,
-            !(surename ?? "").isEmpty,
-            !(email ?? "").isEmpty,
+    static func isFilledReg(name: String?, family: String?, middleName: String?, phonenumber: String?, password: String?) -> Bool {
+        guard !(name ?? "").isEmpty,
+              !(middleName ?? "").isEmpty,
+              !(family ?? "").isEmpty,
+            !(phonenumber ?? "").isEmpty,
             !(password ?? "").isEmpty
                 else {
                 return false
@@ -21,16 +22,15 @@ class Validators {
         return true
     }
     
-    static func isFilledEditUser(username: String?, email: String?, password: String?) -> Bool {
-        guard !(username ?? "").isEmpty,
-            !(email ?? "").isEmpty,
+    
+    static func isFilledLog(phonenumber: String?, password: String?) -> Bool {
+        guard !(phonenumber ?? "").isEmpty,
             !(password ?? "").isEmpty
-            else {
+                else {
                 return false
         }
         return true
     }
-   
     
     static func isSimpleEmail(_ email: String) -> Bool {
         let emailRegEx = "^.+@.+\\..{2,}$"

@@ -12,13 +12,13 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTF: UITextField!
     @IBOutlet weak var phoneNumberTF: UITextField!
     
-    
     var spacePositions: [Int] { [3, 7, 11, 14] }
-    
     
     @IBOutlet weak var loginButton: UIButton!
     
     @IBOutlet weak var goToRegisterBtn: UIButton!
+    private var activityIndicatorView: UIActivityIndicatorView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,6 +40,22 @@ class LoginViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: view, action: #selector(UIView.endEditing))
         view.addGestureRecognizer(tapGesture)
         
+        
+        
+        
+     
+        
+    }
+    
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        // Initialize activity indicator view
+        activityIndicatorView = UIActivityIndicatorView(style: .large)
+        activityIndicatorView.color = .white
+        activityIndicatorView.center = view.center
+        activityIndicatorView.hidesWhenStopped = true
+        view.addSubview(activityIndicatorView)
     }
     
     // Keyboard settings to hide and show
@@ -103,8 +119,68 @@ class LoginViewController: UIViewController {
         }
         
     }
-
     
+    
+    
+  
+    
+    
+    func startActivityView() {
+        view.alpha = 0.8
+        activityIndicatorView.startAnimating()
+    }
+    
+    
+    func stopActivityView() {
+        view.alpha = 1.0
+        activityIndicatorView.stopAnimating()
+    }
+    
+    
+    
+    
+    
+    @IBAction func loginBtnTapped(_ sender: Any) {
+        
+        startActivityView()
+        
+        guard Validators.isFilledLog(phonenumber: phoneNumberTF.text, password: passwordTF.text) else {
+            self.showAlert(with: "Ошибка", and: "Пожалуйста, заполните все поля!")
+            stopActivityView()
+            return
+        }
+        
+        let phone = phoneNumberTF.text!
+        let password = passwordTF.text!
+        
+        AuthService.shared.loginUser(phoneNumber: phone, password: password) { [self] result in
+         
+            switch result {
+            case .success(let success):
+                print(success)
+                DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) { [self] in
+                    stopActivityView()
+                    self.showAlert(with: "Отлично", and: "Вы вошли в аккаунт!") {
+                        self.transitionToHome()
+                    }
+                }
+            case .failure(let failure):
+                print(failure)
+                self.showAlert(with: "Ошибка", and: "Пожалуйста, попробуйте еще раз")
+            }
+        }
+    }
+    
+    
+    
+    // Go to HomeVC
+    
+    func transitionToHome() {
+        
+        let homeVC = storyboard?.instantiateViewController(withIdentifier: "HomeVC") as? HomeTabBarController
+        view.window?.rootViewController = homeVC
+        view.window?.makeKeyAndVisible()
+    }
     
     
 }
@@ -118,5 +194,17 @@ extension LoginViewController: UITextFieldDelegate {
 }
 
 
+// Extenstion for special alerts
+
+extension LoginViewController {
+    func showAlert(with title: String, and message: String, completion: @escaping () -> Void = { }) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (_) in
+            completion()
+        }
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+    }
+}
 
 

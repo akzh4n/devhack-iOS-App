@@ -21,6 +21,9 @@
 		7319157C29CEDD5900ABBDE6 /* HomeTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7319157B29CEDD5900ABBDE6 /* HomeTabBarController.swift */; };
 		7319157E29CEE08100ABBDE6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7319157D29CEE08100ABBDE6 /* MainViewController.swift */; };
 		7319158029CEE10D00ABBDE6 /* FinancesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7319157F29CEE10D00ABBDE6 /* FinancesViewController.swift */; };
+		731C42C629CFB61F00180755 /* ApplicationNetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731C42C529CFB61F00180755 /* ApplicationNetworkServices.swift */; };
+		731C42C929CFB85900180755 /* ApplicationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731C42C829CFB85900180755 /* ApplicationModel.swift */; };
+		731C42CB29CFBD2200180755 /* ServiceModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 731C42CA29CFBD2200180755 /* ServiceModel.swift */; };
 		7334725329CEAD1F00BA6430 /* Montserrat-Bold 700.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7334725029CEAD1F00BA6430 /* Montserrat-Bold 700.ttf */; };
 		7334725429CEAD1F00BA6430 /* Montserrat-SemiBold 600.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7334725129CEAD1F00BA6430 /* Montserrat-SemiBold 600.ttf */; };
 		7334725529CEAD1F00BA6430 /* Montserrat-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7334725229CEAD1F00BA6430 /* Montserrat-Regular.ttf */; };
@@ -55,6 +58,9 @@
 		7319157B29CEDD5900ABBDE6 /* HomeTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeTabBarController.swift; sourceTree = "<group>"; };
 		7319157D29CEE08100ABBDE6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		7319157F29CEE10D00ABBDE6 /* FinancesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FinancesViewController.swift; sourceTree = "<group>"; };
+		731C42C529CFB61F00180755 /* ApplicationNetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationNetworkServices.swift; sourceTree = "<group>"; };
+		731C42C829CFB85900180755 /* ApplicationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApplicationModel.swift; sourceTree = "<group>"; };
+		731C42CA29CFBD2200180755 /* ServiceModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceModel.swift; sourceTree = "<group>"; };
 		7334725029CEAD1F00BA6430 /* Montserrat-Bold 700.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Bold 700.ttf"; sourceTree = "<group>"; };
 		7334725129CEAD1F00BA6430 /* Montserrat-SemiBold 600.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-SemiBold 600.ttf"; sourceTree = "<group>"; };
 		7334725229CEAD1F00BA6430 /* Montserrat-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Regular.ttf"; sourceTree = "<group>"; };
@@ -97,13 +103,6 @@
 				7355012E29CDEB8500A1675B /* RegisterViewController.swift */,
 			);
 			path = Auth;
-			sourceTree = "<group>";
-		};
-		7319156229CED1E800ABBDE6 /* Recources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Recources;
 			sourceTree = "<group>";
 		};
 		7319156729CED2C100ABBDE6 /* Extensions */ = {
@@ -157,6 +156,15 @@
 			path = Applications;
 			sourceTree = "<group>";
 		};
+		731C42C729CFB84C00180755 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				731C42C829CFB85900180755 /* ApplicationModel.swift */,
+				731C42CA29CFBD2200180755 /* ServiceModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		7334724F29CEACFE00BA6430 /* fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -187,9 +195,9 @@
 		7355010D29CDCAB600A1675B /* devhack-iOS */ = {
 			isa = PBXGroup;
 			children = (
+				731C42C729CFB84C00180755 /* Models */,
 				7319156C29CED7C100ABBDE6 /* Home */,
 				7319156729CED2C100ABBDE6 /* Extensions */,
-				7319156229CED1E800ABBDE6 /* Recources */,
 				7319156129CEC0F500ABBDE6 /* Auth */,
 				7355012229CDCAE000A1675B /* App */,
 				7334724F29CEACFE00BA6430 /* fonts */,
@@ -199,6 +207,7 @@
 				7355011C29CDCAB700A1675B /* Info.plist */,
 				7355013029CDED3300A1675B /* devhack-iOS.entitlements */,
 				7355012429CDE9B100A1675B /* AuthService.swift */,
+				731C42C529CFB61F00180755 /* ApplicationNetworkServices.swift */,
 			);
 			path = "devhack-iOS";
 			sourceTree = "<group>";
@@ -315,6 +324,7 @@
 				7319157C29CEDD5900ABBDE6 /* HomeTabBarController.swift in Sources */,
 				7355012D29CDEB7C00A1675B /* LoginViewController.swift in Sources */,
 				7319158029CEE10D00ABBDE6 /* FinancesViewController.swift in Sources */,
+				731C42C929CFB85900180755 /* ApplicationModel.swift in Sources */,
 				7319157A29CEDB6700ABBDE6 /* UIColorExtensions.swift in Sources */,
 				738E26C529CF13E90070A62A /* ApplicationCell.swift in Sources */,
 				7355012F29CDEB8500A1675B /* RegisterViewController.swift in Sources */,
@@ -323,11 +333,13 @@
 				738E26CA29CF32300070A62A /* ServicesListViewController.swift in Sources */,
 				738E26C129CF13AD0070A62A /* ApplicationsTableViewCell.swift in Sources */,
 				7319156929CED2CF00ABBDE6 /* UITextFieldExtensions.swift in Sources */,
+				731C42CB29CFBD2200180755 /* ServiceModel.swift in Sources */,
 				7319157129CED8C500ABBDE6 /* ApplicationsViewController.swift.swift in Sources */,
 				7355011129CDCAB600A1675B /* SceneDelegate.swift in Sources */,
 				7302DFC429CF3BF700FC6937 /* ServicesTableViewCell.swift in Sources */,
 				7302DFC629CF3C1D00FC6937 /* ServiceCell.swift in Sources */,
 				7355012529CDE9B100A1675B /* AuthService.swift in Sources */,
+				731C42C629CFB61F00180755 /* ApplicationNetworkServices.swift in Sources */,
 				7302DFCA29CF700C00FC6937 /* PayViewController.swift in Sources */,
 				7302DFC029CF3BAE00FC6937 /* ServiceListTableViewController.swift in Sources */,
 				7302DFC829CF4F9700FC6937 /* CreateApplicationViewController.swift in Sources */,

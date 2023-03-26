@@ -84,5 +84,5 @@ Clone the repo: `git clone https://github.com/akzh4n/devhack-iOS-App`
 
 
 
-Thanks for attention :3
+Thanks for attention 
 

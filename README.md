@@ -74,8 +74,8 @@ BY: Kalimatov Akzhan (akzh4n)
 
 
 #### Installation steps
-1. Clone the repo: `git clone https://github.com/akzh4n/devhack-iOS-App`
-2. Register your Firebase Project by instructions in official page
+Clone the repo: `git clone https://github.com/akzh4n/devhack-iOS-App`
+
 
 
 

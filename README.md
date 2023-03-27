@@ -1,3 +1,8 @@
+<p align="left">
+  <img src="https://github.com/akzh4n/devhack-iOS-App/blob/main/images/log.png" width="110" title="main">
+</p>
+
+
 # Ourapart (Developer Hackathon App)
 
 Ourapart is an application (pet project) I developed for the Developer Hackathon from Terricon Valley. 
@@ -84,5 +89,5 @@ Clone the repo: `git clone https://github.com/akzh4n/devhack-iOS-App`
 
 
 
-Thanks for attention :3
+Thanks for attention 
 

@@ -30,30 +30,34 @@ BY: Kalimatov Akzhan (akzh4n)
   &nbsp;
   &nbsp;
   <img src="https://github.com/akzh4n/devhack-iOS-App/blob/main/images/3.png" width="200" title="2">
-  
 </p>
-
-
 
 <p align="center">
   <img src="https://github.com/akzh4n/devhack-iOS-App/blob/main/images/4.png" width="200" title="1">
   &nbsp;
   &nbsp;
+  &nbsp;
   <img src="https://github.com/akzh4n/devhack-iOS-App/blob/main/images/5.png" width="200" title="1">
   &nbsp;
   &nbsp;
+  &nbsp;
   <img src="https://github.com/akzh4n/devhack-iOS-App/blob/main/images/6.png" width="200" title="2">
- 
 </p>
-
-
 
 <p align="center">
   <img src="https://github.com/akzh4n/devhack-iOS-App/blob/main/images/7.png" width="200" title="1">
   &nbsp;
   &nbsp;
   &nbsp;
-   <img src="https://github.com/akzh4n/devhack-iOS-App/blob/main/images/8.png" width="200" title="1">
+  <img src="https://github.com/akzh4n/devhack-iOS-App/blob/main/images/8.png" width="200" title="1">
+</p>
+
+<p align="center">
+  <img src="https://github.com/akzh4n/devhack-iOS-App/blob/main/images/9.png" width="200" title="1">
+  &nbsp;
+  &nbsp;
+  &nbsp;
+  <img src="https://github.com/akzh4n/devhack-iOS-App/blob/main/images/10.png" width="200" title="1">
 </p>
 
 &nbsp;
